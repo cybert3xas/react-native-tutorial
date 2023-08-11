@@ -11,36 +11,20 @@
  * to 0 everytime it reloads. 
  * 
  */
-import React, {useReducer} from "react";
+import React, {useState} from "react";
 import {View, Text, StyleSheet, Button} from 'react-native';
 
-//action == how to change state
-const reducer = (state, action) => {
-    //state === {count: number}
-    //action === {type: 'increase' || 'decrease', payload: 1}
-
-    switch(action.type){
-        case 'increase':
-            return {...state, count: state.count + action.payload};
-        case 'decrease':
-            return {...state, count: state.count + action.payload};
-        default: 
-            return state;
-    }
-};
-
 const CounterScreen = () => {
-    const [state, dispatch] = useReducer(reducer, {count: 0});
-
+    const [counter, setCounter] = useState(0);
     return(
         <View>
             <Button title="Increase" onPress={() => {
-                dispatch({type:'increase', payload:12});
+                setCounter(counter + 1);
             }}/>
             <Button title="Decrease" onPress={() => {
-                dispatch({type:'decrease', payload:-12});
+                setCounter(counter - 1);
             }}/>
-            <Text>Current count: {state.count}</Text>
+            <Text>Current count: {counter}</Text>
         </View>
     );
 };
