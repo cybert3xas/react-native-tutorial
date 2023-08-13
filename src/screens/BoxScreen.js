@@ -5,7 +5,9 @@ const BoxScreen = () => {
     return(
         <View style={styles.viewStyle}>
             <View style={styles.boxOneStyle}/>
-            <View style={styles.boxTwoStyle}/>
+            <View style={styles.boxTwoStyleParent}>
+                <View style={styles.boxTwoStyle}/>
+            </View>
             <View style={styles.boxThreeStyle}/>
         </View>
     );
@@ -16,19 +18,22 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'black',
         height: 350,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly' 
+        flexDirection: 'row', 
+        justifyContent: 'space-between'
     },
     boxOneStyle: {
         width: 100, 
         height: 100,
-        backgroundColor: 'red',
-        
+        backgroundColor: 'red'
+    },
+    boxTwoStyleParent: { 
+        height: 200,
+        justifyContent:'flex-end'
     },
     boxTwoStyle: {
         width: 100, 
         height: 100,
-        backgroundColor: 'green'
+        backgroundColor: 'green',
     },
     boxThreeStyle: {
         width: 100, 
